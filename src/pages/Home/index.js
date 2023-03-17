@@ -1,4 +1,5 @@
 import Header from 'components/Header';
+import Button from 'components/Button'
 import styles from './Home.module.scss';
 import relogio from 'assets/inicial.png';
 import { useNavigate } from 'react-router-dom';
@@ -13,8 +14,11 @@ export default function Home() {
         titulo='Classificados Tech'
         descricao='Compre diversos tipos de produtos no melhor site do Brasil!'
         imagem={relogio}
-        className={styles.header}
-      />
+        className={styles.header}>
+          <Button onClick={()=>navigate('/anuncie')}>
+            Quero anunciar
+          </Button>
+      </Header>
       <div className={styles.categorias}>
         <div className={styles['categorias-title']}>
           <h1>
@@ -31,5 +35,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
