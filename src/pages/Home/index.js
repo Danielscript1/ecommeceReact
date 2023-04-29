@@ -12,9 +12,11 @@ import { adicionarItens, buscarItens } from 'store/reducers/itens';
 export default function Home() {
   
   const navigate = useNavigate();
-  const categorias = useSelector(state => state.categorias);
+  const categorias = useSelector(state => state.categorias.data);
+  const categorias1 = useSelector(state => state.categorias);
   const dispatch = useDispatch();
-
+  console.log("recebendo categoria",categorias)
+  console.log("recebendo categoria1",categorias1)
 
 useEffect(() => {
   dispatch(buscarCategorias());

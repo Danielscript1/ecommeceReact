@@ -9,7 +9,8 @@ import { useParams } from 'react-router-dom';
 export default function Anuncie() {
   const dispatch = useDispatch();
   const { nomeCategoria = '' } = useParams();
-  const categorias = useSelector(state => state.categorias.map(({ nome, id }) => ({ nome, id })));
+  const categorias = useSelector(state => state.categorias.data.map(({ nome, id }) => ({ nome, id })));
+  console.log("categorias",categorias)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       categoria: nomeCategoria

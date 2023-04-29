@@ -3,6 +3,7 @@ import categoriasSlice from './reducers/categorias';
 import itensSlice from './reducers/itens';
 import carrinhoSlice from './reducers/carrinhos';
 import buscaSlice from './reducers/busca';
+import authSlice from './reducers/auth';
 import { listener } from './middleware/categoria';
 
 
@@ -13,6 +14,7 @@ const store = configureStore({
         itens: itensSlice,
         carrinhos: carrinhoSlice,
         busca: buscaSlice,
+        Login: authSlice,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().prepend(listener.middleware),

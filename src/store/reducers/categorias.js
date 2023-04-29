@@ -4,8 +4,12 @@ import categoriasService from 'service/categoriasServices';
 
 const { toast } = createStandaloneToast();
 
-const initialState = [];
-
+const initialState = {
+    fetch: false,
+    nome: '',
+    data: []
+};
+console.log("inicio - state", initialState)
 export const buscarCategorias = createAsyncThunk(
     'categorias/buscar',
     categoriasService.buscar
@@ -15,6 +19,7 @@ const categoriasSlice = createSlice({
     name: 'categorias',
     initialState,
     extraReducers: builder => {
+        console.log("fim ->", initialState)
         builder
             .addCase(
                 buscarCategorias.fulfilled,
@@ -26,8 +31,23 @@ const categoriasSlice = createSlice({
                         duration: 2000,
                         isClosable: true
                     })
-                    return payload;
+
+                    return (state = {
+                        ...state,
+                        fetch: true,
+                        nome: payload[0].nome,
+                        data: [...payload, {
+                            nome: 'daniel'
+                        }]
+
+                    })
+
+
+
+
+
                 }
+
             )
             .addCase(
                 buscarCategorias.pending,
@@ -41,7 +61,7 @@ const categoriasSlice = createSlice({
                     })
                 }
             )
-
+        console.log("fim ->", initialState)
     }
 });
 
